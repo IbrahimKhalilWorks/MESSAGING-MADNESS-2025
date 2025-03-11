@@ -99,107 +99,126 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Window resized, bracket view adjusted");
   });
 });
-document.addEventListener("DOMContentLoaded", () => {
-  // Carousel functionality
-  const track = document.querySelector(".scenarios-track");
-  const cards = document.querySelectorAll(".scenario-card");
-  const dots = document.querySelectorAll(".dot");
-  const prevBtn = document.querySelector(".prev-btn");
-  const nextBtn = document.querySelector(".next-btn");
 
-  let currentIndex = 0;
-  const cardWidth = cards[0].offsetWidth + 40; // Card width + margin
-  const totalCards = cards.length;
+document.addEventListener("DOMContentLoaded", function() {
+  // Scenario tabs functionality
+  const tabs = document.querySelectorAll(".me-scenario-tab");
+  const indicator = document.querySelector(".me-tab-indicator");
 
-  // Set initial position
-  updateCarousel();
+  function updateIndicator(activeTab) {
+    if (!indicator) return;
+    indicator.style.width = `${activeTab.offsetWidth}px`;
+    indicator.style.transform = `translateX(${activeTab.offsetLeft}px)`;
+  }
 
-  // Update carousel position and dots
-  function updateCarousel() {
-    // Update track position
-    track.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach((t) => t.classList.remove("active"));
+      tab.classList.add("active");
+      updateIndicator(tab);
+    });
+  });
 
+  // Initialize indicator
+  const activeTab = document.querySelector(".me-scenario-tab.active");
+  if (activeTab && indicator) {
+    updateIndicator(activeTab);
+  }
+
+  // Email navigation
+  const prevBtn = document.querySelector(".me-nav-btn.prev");
+  const nextBtn = document.querySelector(".me-nav-btn.next");
+  const dots = document.querySelectorAll(".me-dot");
+  const emails = document.querySelectorAll(".me-email-content");
+  let currentEmailIndex = 0;
+
+  function showEmail(index) {
+    // Hide all emails
+    emails.forEach(email => {
+      email.style.display = "none";
+    });
+    
+    // Show the selected email
+    emails[index].style.display = "block";
+    
     // Update dots
-    dots.forEach((dot, index) => {
-      dot.classList.toggle("active", index === currentIndex);
+    dots.forEach(dot => {
+      dot.classList.remove("active");
+    });
+    dots[index].classList.add("active");
+    
+    // Update current index
+    currentEmailIndex = index;
+  }
+
+  // Next button click
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      let nextIndex = currentEmailIndex + 1;
+      if (nextIndex >= emails.length) {
+        nextIndex = 0;
+      }
+      showEmail(nextIndex);
     });
   }
 
-  // Next slide
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % totalCards;
-    updateCarousel();
+  // Previous button click
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      let prevIndex = currentEmailIndex - 1;
+      if (prevIndex < 0) {
+        prevIndex = emails.length - 1;
+      }
+      showEmail(prevIndex);
+    });
   }
 
-  // Previous slide
-  function prevSlide() {
-    currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-    updateCarousel();
-  }
-
-  // Event listeners
-  nextBtn.addEventListener("click", nextSlide);
-  prevBtn.addEventListener("click", prevSlide);
-
+  // Dot navigation
   dots.forEach((dot, index) => {
     dot.addEventListener("click", () => {
-      currentIndex = index;
-      updateCarousel();
+      showEmail(index);
     });
   });
 
-  // Auto-advance slides (optional)
-  let slideInterval = setInterval(nextSlide, 5000);
-
-  // Pause auto-advance on hover
-  track.addEventListener("mouseenter", () => {
-    clearInterval(slideInterval);
-  });
-
-  track.addEventListener("mouseleave", () => {
-    slideInterval = setInterval(nextSlide, 5000);
-  });
-
-  // Handle window resize
-  window.addEventListener("resize", () => {
-    // Recalculate card width on resize
-    const newCardWidth = cards[0].offsetWidth + 40;
-
-    // Update carousel position with new dimensions
-    track.style.transform = `translateX(${-currentIndex * newCardWidth}px)`;
-  });
-
-  // Add hover effect to option buttons
-  const optionBtns = document.querySelectorAll(".option-btn");
-  optionBtns.forEach((btn) => {
-    btn.addEventListener("mouseenter", () => {
-      btn.style.transform = "translateY(-2px)";
-    });
-
-    btn.addEventListener("mouseleave", () => {
-      btn.style.transform = "translateY(0)";
+  // Follow up buttons
+  const followBtns = document.querySelectorAll(".me-follow-btn");
+  followBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      followBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
     });
   });
 
-  // Touch swipe functionality for mobile
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  track.addEventListener("touchstart", (e) => {
-    touchStartX = e.changedTouches[0].screenX;
+  // Copy to clipboard functionality
+  const copyBtns = document.querySelectorAll(".me-email-actions button:first-child");
+  copyBtns.forEach((copyBtn) => {
+    copyBtn.addEventListener("click", () => {
+      const subject = copyBtn.closest(".me-email-subject").querySelector("span").textContent;
+      navigator.clipboard.writeText(subject.replace("Subject: ", "")).then(() => {
+        copyBtn.style.color = "#ff5722";
+        setTimeout(() => {
+          copyBtn.style.color = "";
+        }, 1000);
+      });
+    });
   });
 
-  track.addEventListener("touchend", (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  });
-
-  function handleSwipe() {
-    // Detect swipe direction
-    if (touchEndX < touchStartX - 50) {
-      nextSlide(); // Swipe left, go to next
-    } else if (touchEndX > touchStartX + 50) {
-      prevSlide(); // Swipe right, go to previous
+  // Initialize on load with a slight delay to ensure DOM is fully loaded
+  setTimeout(() => {
+    if (activeTab && indicator) {
+      updateIndicator(activeTab);
     }
+    // Show the first email by default
+    showEmail(0);
+  }, 100);
+});
+ 
+window.addEventListener('resize', function() {
+  const activeTab = document.querySelector('.me-scenario-tab.active');
+  const indicator = document.querySelector(".me-tab-indicator");
+  
+  if (activeTab && indicator) {
+    indicator.style.width = `${activeTab.offsetWidth}px`;
+    indicator.style.transform = `translateX(${activeTab.offsetLeft}px)`;
   }
 });
