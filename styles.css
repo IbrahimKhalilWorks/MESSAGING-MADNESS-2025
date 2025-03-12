@@ -1,11 +1,17 @@
+@font-face {
+  font-family: myfont1;
+  src: url(./winner-narrow-bold-maisfontes.e7c6/winner-narrow-bold.ttf);
+  font-weight: 100;
+}
+
 :root {
-  --primary-color: #ff5722; /* Main orange color */
-  --primary-light: #ff7d51; /* Lighter orange for shapes */
-  --primary-dark: #e64a19; /* Darker orange for contrast */
-  --text-color: #ffffff; /* White text */
-  --countdown-bg: #263238; /* Dark background for countdown boxes */
-  --button-color: #ffffff; /* White button */
-  --button-text: #333333; /* Dark text on button */
+  --primary-color: #ff5722;
+  --primary-light: #ff7d51;
+  --primary-dark: #e64a19;
+  --text-color: #ffffff;
+  --countdown-bg: #263238;
+  --button-color: #ffffff;
+  --button-text: #333333;
 }
 
 * {
@@ -15,7 +21,7 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "myfont1", sans-serif !important;
   background-color: var(--primary-color);
   color: var(--text-color);
 }
@@ -24,6 +30,10 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-image: url(MM\ -\ Blog\ 1\ -\ reveal\ 2.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* Navigation Bar Styles */
@@ -71,50 +81,6 @@ body {
   overflow: hidden;
 }
 
-.background-shapes {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.shape {
-  position: absolute;
-  background-color: var(--primary-light);
-  opacity: 0.3;
-  transform: skew(-15deg);
-}
-
-.shape-1 {
-  top: 10%;
-  left: -5%;
-  width: 50%;
-  height: 30%;
-}
-
-.shape-2 {
-  top: 30%;
-  right: -5%;
-  width: 60%;
-  height: 40%;
-}
-
-.shape-3 {
-  bottom: 10%;
-  left: 20%;
-  width: 40%;
-  height: 25%;
-}
-
-.shape-4 {
-  top: 60%;
-  right: 10%;
-  width: 30%;
-  height: 35%;
-}
-
 .content {
   position: relative;
   z-index: 2;
@@ -124,22 +90,17 @@ body {
 }
 
 .title {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 3.5rem;
+  font-size: 2rem;
   color: var(--text-color);
   margin-bottom: 1rem;
-  letter-spacing: 2px;
   line-height: 1;
 }
 
 .subtitle {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--text-color);
   margin-bottom: 2rem;
-  letter-spacing: 1px;
   line-height: 1.2;
-  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -155,11 +116,9 @@ body {
 }
 
 .countdown-title {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 3rem;
+  font-size: 2.2rem;
   color: var(--text-color);
   margin-bottom: 1.5rem;
-  letter-spacing: 1px;
 }
 
 .countdown-container {
@@ -180,8 +139,7 @@ body {
 }
 
 .countdown-value {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 3.5rem;
+  font-size: 3rem;
   color: var(--text-color);
   line-height: 1;
 }
@@ -249,11 +207,11 @@ body {
   }
 
   .title {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
   .subtitle {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
   .countdown-title {
@@ -270,7 +228,7 @@ body {
   }
 
   .countdown-value {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   .countdown-label {
@@ -309,12 +267,10 @@ body {
 }
 
 .mm-bracket-title {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 64px;
+  font-size: 3rem;
   line-height: 1.2;
   margin-bottom: 30px;
-  margin-top: 50px;
-  letter-spacing: 0.5px;
+  margin-top: 30px;
 }
 
 .mm-year {
@@ -397,7 +353,7 @@ body {
 
 @media (max-width: 480px) {
   .mm-bracket-title {
-    font-size: 42px;
+    font-size: 2rem;
   }
 
   .mm-bracket-subtitle {
@@ -412,12 +368,18 @@ body {
   .Bracket_image img {
     min-width: 1000px; /* Adjusted for smaller screens */
   }
-} /* Meet The Emails Section */
+}
+/* Meet The Emails Section */
 .meet-emails {
   background-color: #0f1623;
   color: #ffffff;
   padding: 60px 0;
-  overflow-x: hidden; /* Add this to prevent horizontal scrolling */
+  position: relative;
+  overflow: hidden;
+  background-image: url(slider\ background@2x.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .me-container {
@@ -427,18 +389,22 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
-  width: 100%; /* Add this to ensure full width */
+  position: relative;
+  z-index: 2;
 }
 
 /* Left Panel Styles */
 .me-left-panel {
-  padding-right: 40px;
+  display: flex;
+  flex-direction: column;
 }
 
 .me-title {
   font-family: "Bebas Neue", sans-serif;
   font-size: 48px;
-  margin-bottom: 20px;
+  line-height: 1;
+  letter-spacing: 1px;
+  margin: 0 0 20px 0;
 }
 
 .me-highlight {
@@ -446,8 +412,9 @@ body {
 }
 
 .me-subtitle {
-  font-size: 18px;
-  margin-bottom: 40px;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 0 40px 0;
   opacity: 0.9;
 }
 
@@ -459,10 +426,8 @@ body {
   margin-bottom: 40px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 10px;
-  -webkit-overflow-scrolling: touch;
 }
 
-/* Hide scrollbar but keep functionality */
 .me-scenarios::-webkit-scrollbar {
   height: 4px;
 }
@@ -478,9 +443,11 @@ body {
   color: #ffffff;
   padding: 8px 0;
   font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
   opacity: 0.6;
   transition: opacity 0.3s ease;
+  white-space: nowrap;
 }
 
 .me-scenario-tab.active {
@@ -490,15 +457,18 @@ body {
 .me-tab-indicator {
   position: absolute;
   bottom: -1px;
+  left: 0;
   height: 2px;
   background-color: #ff5722;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, width 0.3s ease;
 }
 
 .me-role {
   font-family: "Bebas Neue", sans-serif;
   font-size: 32px;
-  margin-bottom: 30px;
+  line-height: 1.1;
+  letter-spacing: 1px;
+  margin: 0 0 30px 0;
 }
 
 /* Follow Buttons */
@@ -514,6 +484,8 @@ body {
   color: #ffffff;
   padding: 10px 20px;
   border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -529,20 +501,32 @@ body {
   gap: 25px;
 }
 
+.me-detail-item {
+  margin: 0;
+}
+
 .me-detail-item h4 {
   font-family: "Bebas Neue", sans-serif;
   font-size: 18px;
-  margin-bottom: 8px;
-  color: var(--button-color);
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+  margin: 0 0 8px 0;
+  color: #ff5722;
 }
 
 .me-detail-item p {
-  color: #ffffff;
-  padding: 8px 0;
+  margin: 0;
+  padding: 0;
   font-size: 14px;
-  cursor: pointer;
-  opacity: 0.6;
+  line-height: 1.5;
+  opacity: 0.8;
+  font-family: "Roboto";
+}
+
+/* Right Panel Styles */
+.me-right-panel {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
 }
 
 .me-email-nav {
@@ -550,17 +534,26 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 30px;
+  width: 70%;
 }
-.me-email-hi {
-  font-size: large !important;
-  opacity: 1 !important;
+
+.me-email-nav h3 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 24px;
+  letter-spacing: 1px;
+  margin: 0;
+  color: #ffffff;
 }
+
 .me-nav-btn {
   background: none;
   border: none;
   color: #ffffff;
   cursor: pointer;
   padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: opacity 0.3s ease;
 }
 
@@ -572,22 +565,56 @@ body {
   color: #ff5722;
 }
 
+/* Email Carousel - UPDATED FOR PEEK EFFECT */
+.me-email-carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-right: 20%; /* Make room for the peeking email */
+}
+
+.me-email-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  gap: 30px; /* Space between emails */
+}
+
+.me-email-content {
+  flex: 0 0 auto;
+  width: 80%; /* Main email takes 80% of the container width */
+  min-width: 80%;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.me-email-content.active {
+  opacity: 1;
+}
+
 .me-email-header {
-  margin-bottom: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px 10px 0 0;
+  padding: 20px;
+  margin: 0;
 }
 
 .me-email-from {
-  display: flex;
-  align-items: center;
-  gap: 12px;
   margin-bottom: 15px;
 }
 
+.me-avatar-span {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .me-avatar {
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
 }
 
 .me-avatar img {
@@ -596,15 +623,32 @@ body {
   object-fit: cover;
 }
 
+.me-avatar-span span {
+  font-size: 14px;
+  opacity: 0.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: "Roboto";
+}
+
 .me-email-subject {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: "Roboto";
+}
+
+.me-email-subject span {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Roboto";
 }
 
 .me-email-actions {
   display: flex;
   gap: 10px;
+  flex-shrink: 0;
 }
 
 .me-email-actions button {
@@ -613,6 +657,9 @@ body {
   color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
   padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: color 0.3s ease;
 }
 
@@ -621,27 +668,29 @@ body {
 }
 
 .me-email-body {
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.6;
-}
-.me-email-content {
   background: rgba(255, 255, 255, 0.05);
-  padding: 30px;
-  border-radius: 10px;
+  border-radius: 0 0 10px 10px;
+  padding: 20px;
+  margin: 0;
+  font-family: "Roboto";
 }
+
 .me-email-body p {
-  color: #ffffff;
+  margin: 0;
   padding: 8px 0;
   font-size: 14px;
-  cursor: pointer;
-  opacity: 0.6;
+  line-height: 1.6;
+  opacity: 0.8;
 }
-.me-avatar-span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+
+.me-email-body p:first-child {
+  padding-top: 0;
 }
+
+.me-email-body p:last-child {
+  padding-bottom: 0;
+}
+
 .me-email-nav-dots {
   display: flex;
   justify-content: center;
@@ -655,6 +704,7 @@ body {
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.3);
   border: none;
+  padding: 0;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -664,7 +714,74 @@ body {
   width: 24px;
   border-radius: 4px;
 }
+/* Add these animation styles to your CSS file */
+@keyframes copyPulse {
+  0% {
+    transform: scale(1);
+    color: rgba(255, 255, 255, 0.6);
+  }
+  25% {
+    transform: scale(1.2);
+    color: #ff5722;
+  }
+  50% {
+    transform: scale(1);
+    color: #ff5722;
+  }
+  75% {
+    transform: scale(1.1);
+    color: #ff5722;
+  }
+  100% {
+    transform: scale(1);
+    color: rgba(255, 255, 255, 0.6);
+  }
+}
 
+.me-email-actions button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.me-email-actions button:hover {
+  color: #ffffff;
+}
+
+.me-email-actions button.copying {
+  animation: copyPulse 1s ease;
+}
+
+/* Add a tooltip for feedback */
+.me-email-actions button::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  background: #ff5722;
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.me-email-actions button.copying::after {
+  content: "Copied!";
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+}
 /* Responsive Styles */
 @media (max-width: 1200px) {
   .me-container {
@@ -673,41 +790,124 @@ body {
 }
 
 @media (max-width: 992px) {
+  .meet-emails {
+    padding: 60px 0;
+  }
+
   .me-container {
     grid-template-columns: 1fr;
-    gap: 30px;
-    padding: 0 15px;
+    gap: 50px;
   }
 
   .me-title {
-    font-size: 36px;
-    margin-bottom: 15px;
+    font-size: 42px;
   }
 
   .me-subtitle {
-    font-size: 16px;
-    margin-bottom: 30px;
+    max-width: 30%;
+  }
+
+  .me-detail-item p {
+    max-width: 100%;
+  }
+
+  .me-email-carousel {
+    padding-right: 15%; /* Slightly less peek on smaller screens */
+  }
+
+  .me-email-content {
+    width: 85%;
+    min-width: 85%;
   }
 }
 
 @media (max-width: 768px) {
   .meet-emails {
-    padding: 30px 0;
+    padding: 40px 0;
+  }
+  .me-right-panel {
+    display: flex;
+    flex-direction: column;
+    width: 34%;
+  }
+  .me-container {
+    padding: 0 20px;
+    gap: 40px;
+  }
+  .me-email-nav {
+    width: 90%;
+  }
+  .me-title {
+    font-size: 36px;
+  }
+
+  .me-subtitle {
+    font-size: 15px;
+    margin-bottom: 30px;
   }
 
   .me-scenarios {
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 10px;
-    margin-bottom: 25px;
-    gap: 15px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 30px;
   }
 
   .me-scenario-tab {
     font-size: 13px;
-    padding: 6px 12px;
-    white-space: nowrap;
+  }
+
+  .me-role {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+
+  .me-follow-buttons {
+    margin-bottom: 30px;
+  }
+
+  .me-detail-item h4 {
+    font-size: 16px;
+  }
+
+  .me-email-header,
+  .me-email-body {
+    padding: 15px;
+  }
+
+  .me-email-carousel {
+    padding-right: 10%; /* Even less peek on mobile */
+  }
+
+  .me-email-content {
+    width: 90%;
+    min-width: 90%;
+  }
+}
+
+@media (max-width: 576px) {
+  .meet-emails {
+    padding: 80px 0;
+  }
+
+  .me-container {
+    padding: 0 15px;
+    gap: 30px;
+  }
+
+  .me-title {
+    font-size: 32px;
+  }
+
+  .me-subtitle {
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+
+  .me-scenarios {
+    gap: 15px;
+    margin-bottom: 25px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 30%;
+    position: static;
   }
 
   .me-role {
@@ -716,91 +916,58 @@ body {
   }
 
   .me-follow-buttons {
+    flex-direction: column;
     gap: 10px;
     margin-bottom: 25px;
+    max-width: 30%;
   }
 
-  .me-detail-item {
-    margin-bottom: 15px;
+  .me-follow-btn {
+    width: 100%;
+    padding: 10px 15px;
+  }
+
+  .me-details {
+    gap: 20px;
   }
 
   .me-detail-item h4 {
-    font-size: 16px;
-    margin-bottom: 5px;
+    font-size: 15px;
   }
 
   .me-detail-item p {
-    font-size: 14px;
-  }
-
-  .me-right-panel {
-    padding: 20px;
-    margin: 0 -15px;
-    border-radius: 0;
+    font-size: 13px;
   }
 
   .me-email-nav h3 {
     font-size: 20px;
   }
 
-  .me-email-from {
-    font-size: 13px;
-  }
-
   .me-email-subject {
-    font-size: 14px;
-  }
-
-  .me-email-body {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
-  .me-email-body p {
-    margin-bottom: 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  .me-container {
-    padding: 20px 15px;
-  }
-
-  .me-title {
-    font-size: 32px;
-  }
-
-  .me-follow-buttons {
-    flex-direction: column;
-  }
-
-  .me-follow-btn {
-    width: 100%;
-    text-align: center;
-  }
-
-  .me-right-panel {
-    padding: 15px;
-  }
-
-  .me-email-header {
-    margin-bottom: 20px;
-  }
-
-  .me-email-from {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
-  }
-
-  .me-email-subject {
-    flex-direction: column;
-    gap: 8px;
+    gap: 10px;
   }
 
   .me-email-actions {
-    width: 100%;
-    justify-content: flex-end;
+    align-self: flex-end;
+  }
+
+  .me-email-carousel {
+    padding-right: 5%; /* Minimal peek on very small screens */
+  }
+
+  .me-email-content {
+    width: 95%;
+    min-width: 95%;
+  }
+
+  .me-avatar-span {
+    gap: 8px;
+  }
+
+  .me-avatar-span span {
+    font-size: 13px;
   }
 }
 
@@ -810,22 +977,10 @@ body {
   padding: 80px 0;
   position: relative;
   overflow: hidden;
-}
-
-/* Background diagonal lines */
-.entrants-guide::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1) 25%,
-    transparent 25%
-  );
-  z-index: 1;
+  background-image: url(pre\ footer\ background@2x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .eg-container {
@@ -838,11 +993,10 @@ body {
 /* Title Styles */
 .eg-title {
   text-align: center;
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 64px;
+
+  font-size: 3rem;
   line-height: 1.1;
   margin-bottom: 60px;
-  letter-spacing: 1px;
 }
 
 .eg-title-dark {
@@ -881,29 +1035,30 @@ body {
 }
 
 .eg-card-title {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 28px;
+  font-size: 1rem;
   color: #000000;
   margin-bottom: 20px;
-  letter-spacing: 0.5px;
 }
 
 .eg-card-text {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.6;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.5);
   margin-bottom: 30px;
   flex-grow: 1;
+  font-family: Roboto, "sans-serif";
+  font-weight: 500;
 }
 
 .eg-card-link {
   display: flex;
   align-items: center;
-  font-size: 16px;
+  font-size: 18px;
   color: var(--button-color);
   text-decoration: none;
   font-weight: 500;
   transition: opacity 0.3s ease;
+  font-family: "Roboto", "sans-serif";
 }
 
 .eg-card-link svg {
@@ -967,7 +1122,7 @@ body {
 
 @media (max-width: 480px) {
   .eg-title {
-    font-size: 42px;
+    font-size: 2rem;
   }
 
   .eg-card {
@@ -981,7 +1136,7 @@ body {
 .footer {
   background-color: var(--countdown-bg);
   color: var(--text-color);
-  padding: 20px 20px;
+  padding: 20px 70px;
 }
 
 .footer-content {
@@ -989,6 +1144,7 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  font-family: "Roboto", "sans-serif";
 }
 
 .footer-left {
