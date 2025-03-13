@@ -315,60 +315,45 @@ body {
   display: block;
 }
 
-/* Responsive Styles */
-@media (max-width: 1024px) {
-  .bracket-scroll-container {
-    max-height: 70vh;
-  }
-
-  .Bracket_image img {
-    min-width: 1000px;
-  }
-}
-
 @media (max-width: 768px) {
   .mm-bracket-section {
-    padding: 30px 15px;
+    padding: 20px 10px;
+    overflow: hidden;
+  }
+
+  .mm-bracket-container {
+    padding: 0;
+  }
+
+  .mm-bracket-header {
+    margin-bottom: 15px;
   }
 
   .mm-bracket-title {
-    font-size: 36px;
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .mm-year {
+    font-size: 24px;
+  }
+
+  .mm-bracket {
+    font-size: 28px;
   }
 
   .mm-bracket-subtitle {
-    font-size: 16px;
-    padding: 0 15px;
+    font-size: 14px;
+    margin-bottom: 15px;
   }
 
-  .bracket-scroll-container {
-    max-height: 60vh;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-
-  .Bracket_image img {
-    min-width: 1200px; /* Force horizontal scrolling on mobile */
+  .commonninja_component iframe {
+    height: 500px !important;
+    transform: scale(0.7);
+    transform-origin: top center;
   }
 }
 
-@media (max-width: 480px) {
-  .mm-bracket-title {
-    font-size: 2rem;
-  }
-
-  .mm-bracket-subtitle {
-    font-size: 16px;
-    display: none;
-  }
-
-  .bracket-scroll-container {
-    max-height: 50vh;
-  }
-
-  .Bracket_image img {
-    min-width: 1000px; /* Adjusted for smaller screens */
-  }
-}
 /* Meet The Emails Section */
 .meet-emails {
   background-color: #0f1623;
@@ -400,7 +385,6 @@ body {
 }
 
 .me-title {
-  font-family: "Bebas Neue", sans-serif;
   font-size: 48px;
   line-height: 1;
   letter-spacing: 1px;
@@ -464,8 +448,7 @@ body {
 }
 
 .me-role {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 32px;
+  font-size: 22px;
   line-height: 1.1;
   letter-spacing: 1px;
   margin: 0 0 30px 0;
@@ -506,7 +489,6 @@ body {
 }
 
 .me-detail-item h4 {
-  font-family: "Bebas Neue", sans-serif;
   font-size: 18px;
   letter-spacing: 1px;
   margin: 0 0 8px 0;
@@ -536,9 +518,25 @@ body {
   margin-bottom: 30px;
   width: 70%;
 }
-
+.emAITO .bracket-wrapper.march-madness {
+  /* --row-gap: 40px; */
+  /* --column-gap: 10px; */
+  display: grid;
+  row-gap: var(--row-gap);
+  column-gap: var(--column-gap);
+  grid-template-areas:
+    "group1 final-four group3"
+    "group2 final-four group4";
+}
+.izMrlj.viewer-mode .bracket-wrapper,
+.izMrlj.gallery-mode .bracket-wrapper,
+.izMrlj.preview-mode .bracket-wrapper,
+.izMrlj.prediction-preview-mode .bracket-wrapper,
+.izMrlj.prediction-page-mode .bracket-wrapper {
+  overflow-x: hidden !important;
+  max-width: 100vw;
+}
 .me-email-nav h3 {
-  font-family: "Bebas Neue", sans-serif;
   font-size: 24px;
   letter-spacing: 1px;
   margin: 0;
@@ -569,8 +567,8 @@ body {
 .me-email-carousel {
   position: relative;
   overflow: hidden;
-  width: 100%;
-  padding-right: 20%; /* Make room for the peeking email */
+  width: 100vw;
+  padding-right: 20%;
 }
 
 .me-email-track {
@@ -581,8 +579,8 @@ body {
 
 .me-email-content {
   flex: 0 0 auto;
-  width: 80%; /* Main email takes 80% of the container width */
-  min-width: 80%;
+  width: 35vw;
+  min-width: 40%;
   opacity: 0.5;
   transition: opacity 0.3s ease;
 }
@@ -696,6 +694,7 @@ body {
   justify-content: center;
   gap: 8px;
   margin-top: 30px;
+  margin-right: 22%;
 }
 
 .me-dot {
@@ -755,10 +754,6 @@ body {
   color: #ffffff;
 }
 
-.me-email-actions button.copying {
-  animation: copyPulse 1s ease;
-}
-
 /* Add a tooltip for feedback */
 .me-email-actions button::after {
   content: "";
@@ -803,10 +798,6 @@ body {
     font-size: 42px;
   }
 
-  .me-subtitle {
-    max-width: 30%;
-  }
-
   .me-detail-item p {
     max-width: 100%;
   }
@@ -821,9 +812,35 @@ body {
   }
 }
 
+ 
 @media (max-width: 768px) {
   .meet-emails {
     padding: 40px 0;
+  }
+  .me-left-panel {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  }
+  .me-right-panel {
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+  }
+  .mm-bracket-title,
+  .eg-title {
+    font-size: 28px !important;
+  }
+  .footer {
+    padding: 20px 20px !important;
+  }
+  .izMrlj.viewer-mode .bracket-wrapper,
+  .izMrlj.gallery-mode .bracket-wrapper,
+  .izMrlj.preview-mode .bracket-wrapper,
+  .izMrlj.prediction-preview-mode .bracket-wrapper,
+  .izMrlj.prediction-page-mode .bracket-wrapper {
+    overflow-x: auto !important;
+    max-width: 100vw;
   }
   .me-right-panel {
     display: flex;
@@ -873,7 +890,10 @@ body {
   }
 
   .me-email-carousel {
-    padding-right: 10%; /* Even less peek on mobile */
+    padding-right: 4%; /* Even less peek on mobile */
+  }
+  .me-email-nav-dots {
+    margin-right: 10%;
   }
 
   .me-email-content {
@@ -916,12 +936,12 @@ body {
   }
 
   .me-follow-buttons {
-    flex-direction: column;
     gap: 10px;
     margin-bottom: 25px;
-    max-width: 30%;
   }
-
+  .me-tab-indicator {
+    display: none;
+  }
   .me-follow-btn {
     width: 100%;
     padding: 10px 15px;
@@ -951,10 +971,6 @@ body {
 
   .me-email-actions {
     align-self: flex-end;
-  }
-
-  .me-email-carousel {
-    padding-right: 5%; /* Minimal peek on very small screens */
   }
 
   .me-email-content {
