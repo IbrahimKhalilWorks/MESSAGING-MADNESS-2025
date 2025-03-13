@@ -409,16 +409,19 @@ body {
   gap: 20px;
   margin-bottom: 40px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: "Roboto", "sans-serif" !important;
   padding-bottom: 10px;
 }
 
 .me-scenarios::-webkit-scrollbar {
   height: 4px;
+  font-family: "Roboto", "sans-serif" !important;
 }
 
 .me-scenarios::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 4px;
+  font-family: "Roboto", "sans-serif" !important;
 }
 
 .me-scenario-tab {
@@ -432,11 +435,13 @@ body {
   opacity: 0.6;
   transition: opacity 0.3s ease;
   white-space: nowrap;
+  font-family: "Roboto", "sans-serif" !important;
 }
 
 .me-scenario-tab.active {
   opacity: 1;
 }
+
 
 .me-tab-indicator {
   position: absolute;
@@ -453,30 +458,7 @@ body {
   letter-spacing: 1px;
   margin: 0 0 30px 0;
 }
-
-/* Follow Buttons */
-.me-follow-buttons {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 40px;
-}
-
-.me-follow-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  color: #ffffff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.me-follow-btn.active {
-  background-color: #ff5722;
-}
-
+ 
 /* Details Section */
 .me-details {
   display: flex;
