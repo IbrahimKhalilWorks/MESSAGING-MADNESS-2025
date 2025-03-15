@@ -1,43 +1,33 @@
-// Set the countdown date (21 days, 15 hours, 19 minutes, 52 seconds from now)
-const countdownDate = new Date();
-countdownDate.setDate(countdownDate.getDate() + 21);
-countdownDate.setHours(countdownDate.getHours() + 15);
-countdownDate.setMinutes(countdownDate.getMinutes() + 19);
-countdownDate.setSeconds(countdownDate.getSeconds() + 52);
+// Set target date: 11:59 PM EDT on March 21, 2025
+const targetDate = new Date('2025-03-21T23:59:00-04:00').getTime();
 
-// Update the countdown every second
-const countdown = setInterval(function () {
-  // Get current date and time
+// Update countdown every second
+const countdown = setInterval(function() {
+  // Calculate time remaining
   const now = new Date().getTime();
-
-  // Find the distance between now and the countdown date
-  const distance = countdownDate - now;
-
-  // Time calculations for days, hours, minutes and seconds
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor(
-    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  // Display the result with leading zeros if needed
-  document.getElementById("days").textContent = days;
-  document.getElementById("hours").textContent =
-    hours < 10 ? "0" + hours : hours;
-  document.getElementById("minutes").textContent =
-    minutes < 10 ? "0" + minutes : minutes;
-  document.getElementById("seconds").textContent =
-    seconds < 10 ? "0" + seconds : seconds;
-
-  // If the countdown is finished, display a message
-  if (distance < 0) {
+  const remaining = targetDate - now;
+  
+  if (remaining < 0) {
+    // Countdown finished
     clearInterval(countdown);
-    document.getElementById("days").textContent = "00";
+    document.getElementById("days").textContent = "0";
     document.getElementById("hours").textContent = "00";
     document.getElementById("minutes").textContent = "00";
     document.getElementById("seconds").textContent = "00";
+    return;
   }
+  
+  // Calculate time units
+  const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+  
+  // Update display
+  document.getElementById("days").textContent = days;
+  document.getElementById("hours").textContent = hours < 10 ? "0" + hours : hours;
+  document.getElementById("minutes").textContent = minutes < 10 ? "0" + minutes : minutes;
+  document.getElementById("seconds").textContent = seconds < 10 ? "0" + seconds : seconds;
 }, 1000);
 
 document.addEventListener("DOMContentLoaded", function () {
